@@ -1,7 +1,8 @@
 # testblazorapp
 
+```
 
-`name: 01 Deploy Blazor WASM to GitHub Page
+name: 01 Deploy Blazor WASM to GitHub Page
 env:
   PUBLISH_DIR: release/wwwroot
   
@@ -44,4 +45,6 @@ jobs:
           target_branch: gh-pages
           build_dir: ${{ env.PUBLISH_DIR }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}  `
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}  
+
+```
