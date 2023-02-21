@@ -1,11 +1,11 @@
 name: Deploy Blazor WASM to GitHub Page
 env:
-  PUBLISH_DIR: bin/Release/net7.0/publish/wwwroot
+  PUBLISH_DIR: release/wwwroot
   
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Publish application
-        run: dotnet publish -c Release
+        run: dotnet publish -c Release -o release
         
        # base href url value should be changed so that resources like CSS and scripts can load properly. 
       - name: Rewrite base href
@@ -41,5 +41,5 @@ jobs:
           target_branch: gh-pages
           build_dir: ${{ env.PUBLISH_DIR }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}  
         
